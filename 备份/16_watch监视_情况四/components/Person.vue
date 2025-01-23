@@ -1,6 +1,10 @@
 <template>
     <div class="person">
-        <h1>情况五:监视上述多个数据</h1> 
+        <!-- 
+            监视的是对象里的属性。最好写成函数式。
+            若是对象监视的是地址值，需要关注对象内部，需要手动开启深度监视
+         -->
+        <h1>情况四:监视【ref】或【reactive】定义的【对象类型】数据中的某个属性</h1>    
         <h2>姓名：{{ person.name }}</h2>
         <h2>年龄：{{ person.age }}</h2>
         <h2>汽车：{{ person.car.c1}}、{{ person.car.c2 }}</h2>
@@ -47,10 +51,16 @@ import { reactive, ref, watch } from 'vue';
             c2: "c2"
         }
     }
-    // 监视，情况五:监视上述多个数据。若是没有改变watch不会被触发
-    watch([()=>person.name, person.car], (newVal, oldVal)=>{
-        console.log("person.name和person.car变化了", newVal, oldVal);
+    // 监视，情况四：监视响应式对象中的某个属性，且该属性是基本类型的，要写成函数式
+    watch(()=>person.name, (newVal, oldVal)=>{
+        console.log("person.name变化了", newVal, oldVal);
     })
+
+    //监视，情况四：监视响应式对象中的某个属性，且该属性是对象类型的，可以直接写（监视细枝末节，不关注整体），
+    // 也能写成函数，更推荐写成函数（只看整体；开启深度监视，则整个都能监视）
+    watch(()=>person.car, (newVal, oldVal)=>{
+        console.log("person.car变化了", newVal, oldVal);
+    },{deep:true})
     
 </script>
 <style scoped>
