@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script lang="ts" setup name="home">
+<script lang="ts" setup name="Home">
 
 </script>
 

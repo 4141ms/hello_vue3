@@ -6,19 +6,27 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/Home.vue";
 import About from "@/pages/About.vue";
 import New from "@/pages/New.vue";
+import Details from "@/pages/Details.vue";
 
 //第二步：创建路由器
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/home',
+            path: '/',
             component: Home,
         },
         {
             name: 'xinwen',
-            path: '/new',
+            path: '/news',
             component: New,
+            children: [
+                {
+                    name: "xiang",
+                    path: 'detail', //创建子级路由，注意，不要加"/"
+                    component: Details
+                }
+            ]
         },
         {
             path: '/about',
