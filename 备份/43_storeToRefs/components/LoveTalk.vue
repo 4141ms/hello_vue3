@@ -8,19 +8,15 @@
 </template>
 
 <script lang="ts" setup name="LoveTalk">
-    import { reactive } from 'vue';
-    import axios from 'axios';
-    import { nanoid } from 'nanoid';
+import {useTalkStore} from '@/store/LoveTalk'
+import { storeToRefs } from 'pinia'
 
-    let talkList = reactive([
-        {id:'asdfg01', title:'今天你有点怪，怪好看的'}
-    ])
+    let talkStore = useTalkStore()
+    let {talkList} = storeToRefs(talkStore)
 
-    async function getLoveTalk(){
-        let {data:{content:title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json')
-
-        let obj = {id:nanoid(), title }
-        talkList.unshift(obj)
+    function getLoveTalk(){
+        // 需要magic
+        talkStore.getATalk()
     }
 </script>
 
