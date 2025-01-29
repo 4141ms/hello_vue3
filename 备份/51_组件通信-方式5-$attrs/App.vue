@@ -11,7 +11,6 @@
                 <RouterLink :to="{path:'/mitt'}" active-class="active">3.mitt</RouterLink>
                 <RouterLink :to="{path:'/model'}" active-class="active">4.v-model</RouterLink>
                 <RouterLink :to="{path:'/attrs'}" active-class="active">5.$attrs</RouterLink>
-                <RouterLink :to="{path:'/ref-parent'}" active-class="active">06_$refs、$parent</RouterLink>
             </div>
             <!-- 展示区 -->
             <div class="main-content">
