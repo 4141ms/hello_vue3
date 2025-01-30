@@ -7,6 +7,9 @@ import Mitt from '@/pages/03_mitt/Father.vue'
 import Model from '@/pages/04_v-model/Father.vue'
 import Attrs from '@/pages/05_$attrs/Father.vue'
 import RefParent from '@/pages/06_$refs、$parent/Father.vue'
+import PeoInj from '@/pages/07_provide、inject/Father.vue'
+import Pinia from '@/pages/08_pinia/Father.vue'
+import Slot from '@/pages/09_slot-作用域插槽/Father.vue'
 
 //第二步：创建路由器
 const router = createRouter({
@@ -35,6 +38,18 @@ const router = createRouter({
         {
             path: '/ref-parent',
             component: RefParent,
+        },
+        {
+            path: '/provide-inject',
+            component: PeoInj,
+        },
+        {
+            path: '/pinia',
+            component: Pinia,
+        },
+        {
+            path: '/slot',
+            component: Slot,
         },
     ]
 })
